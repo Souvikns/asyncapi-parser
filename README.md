@@ -1,6 +1,6 @@
 # AsyncAPI Parser for rust
 
-AsyncAPI parser for rust. This project aims to implement all the functionalities in [asyncapi/parser-js](https://github.com/asyncapi/parser-js).
+AsyncAPI parser written in rust. This project aims to implement all the functionalities in [asyncapi/parser-js](https://github.com/asyncapi/parser-js).
 
 
 ### Usage 
