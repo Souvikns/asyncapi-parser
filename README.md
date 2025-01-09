@@ -2,6 +2,7 @@
 
 An AsyncAPI parser implemented in Rust, designed to replicate and fully support the features provided by [asyncapi/parser-js](https://github.com/asyncapi/parser-js).
 
+> ❗️As of now we are only supporting asycnapi spec v3. 
 
 ### Usage 
 The package exposes two functions:
