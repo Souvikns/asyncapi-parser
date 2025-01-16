@@ -2,7 +2,8 @@ use jsonschema::Draft;
 use serde_json::Value;
 use std::fs;
 use std::path::Path;
-
+mod models;
+use models::asyncapi::AsyncAPIDocument;
 
 /// Validate AsyncAPI Spec file 
 /// 
