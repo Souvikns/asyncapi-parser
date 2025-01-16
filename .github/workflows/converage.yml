@@ -7,21 +7,24 @@ jobs:
   test:
     name: coverage
     runs-on: ubuntu-latest
-    container:
-      image: xd009642/tarpaulin:develop-nightly
-      options: --security-opt seccomp=unconfined
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v2
-
-      - name: Install dependencies
-        run: cargo fetch
-
-      - name: Generate code coverage
-        run: |
-          cargo +nightly tarpaulin --verbose --all-features --workspace --timeout 120 --out xml
-
-      - name: Upload to codecov.io
-        uses: codecov/codecov-action@v2
-        with:
-          fail_ci_if_error: true
+        # Checkout Repository
+        - name: Checkout Repository
+          uses: actions/checkout@v3
+        # Setup up Rust toolchain
+        - name: Set up Rust
+          uses: actions-rs/toolchain@v1
+          with:
+            toolchain: stable
+            override: true
+        - name: Install dependencies
+          run: cargo fetch 
+        - name: Install tarpaulin
+          run: cargo instal tarpaulin
+        - name: Generate coverage
+          run: |
+            cargo tarpaulin --verbos --all-features --workspace --timeout 120 --out xml
+        - name: upload to codecov.io
+          uses: codecov/codecov-action@v2
+          with:
+            fail_ci_if_error: true
