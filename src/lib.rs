@@ -3,15 +3,14 @@ use serde_json::Value;
 use std::fs;
 use std::path::Path;
 
-
-/// Validate AsyncAPI Spec file 
-/// 
+/// Validate AsyncAPI Spec file
+///
 /// # Arguments
-/// 
+///
 /// * `filepath` - path of the AsycnAPI specification file.
-/// 
+///
 /// # Returns
-/// 
+///
 /// A new `Result` instance.
 pub fn validate(filepath: &str) -> Result<(), Vec<String>> {
     let spec_json = load_spec(filepath);
@@ -34,15 +33,13 @@ pub fn validate(filepath: &str) -> Result<(), Vec<String>> {
 fn load_spec(filepath: &str) -> Value {
     let file_path = Path::new(filepath);
     let file_conent = read_file(filepath);
-    let extension = get_extension(&file_path);
+    let extension = get_extension(file_path);
     let spec_json: Value = match extension {
         Some(ext) => {
             let json_data: Value = if ext == "json" {
-                let json = serde_json::from_str(&file_conent).expect("error parsing spec file");
-                json
+                serde_json::from_str(&file_conent).expect("error parsing spec file")
             } else if ext == "yaml" || ext == "yml" {
-                let json = serde_yaml::from_str(&file_conent).expect("error parsing spec file");
-                json
+                serde_yaml::from_str(&file_conent).expect("error parsing spec file")
             } else {
                 panic!("Invalid file format")
             };
@@ -64,8 +61,7 @@ fn load_scheme() -> Value {
 
 fn read_file(filepath: &str) -> String {
     let path: &Path = Path::new(filepath);
-    let file_content = fs::read_to_string(path).expect("error loading file from the given path");
-    file_content
+    fs::read_to_string(path).expect("error loading file from the given path")
 }
 
 fn get_extension(path: &Path) -> Option<&str> {
