@@ -19,7 +19,7 @@ jobs:
                 override: true
             # Install dependencies 
             - name: Install dependencies
-              run: cargo fatch
+              run: cargo fetch
             # Rust Tests
             - name: Run Tests
               run: cargo test --verbose
