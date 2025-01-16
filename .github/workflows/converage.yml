@@ -20,7 +20,7 @@ jobs:
         - name: Install dependencies
           run: cargo fetch 
         - name: Install tarpaulin
-          run: cargo instal tarpaulin
+          run: cargo install tarpaulin
         - name: Generate coverage
           run: |
             cargo tarpaulin --verbos --all-features --workspace --timeout 120 --out xml
