@@ -35,48 +35,48 @@ pub struct License {
 }
 
 impl Info {
-    pub fn title(self) -> String {
-        self.title
+    pub fn title(&self) -> &str {
+        &self.title
     }
 
-    pub fn version(self) -> String {
-        self.version
+    pub fn version(&self) -> &str {
+        &self.version
     }
 
-    pub fn has_description(self) -> bool {
+    pub fn has_description(&self) -> bool {
         if self.description == None {
             return false;
         }
         true
     }
 
-    pub fn description(self) -> Option<String> {
-        self.description
+    pub fn description(&self) -> &Option<String> {
+        &self.description
     }
 
-    pub fn has_id(self) -> bool {
+    pub fn has_id(&self) -> bool {
         if self.id == None {
             return false;
         }
         true
     }
 
-    pub fn id(self) -> Option<String> {
-        self.id
+    pub fn id(&self) -> &Option<String> {
+        &self.id
     }
 
-    pub fn has_terms_of_service(self) -> bool {
+    pub fn has_terms_of_service(&self) -> bool {
         if self.id == None {
             return false;
         }
         true
     }
 
-    pub fn terms_of_service(self) -> Option<String> {
-        self.terms_of_service
+    pub fn terms_of_service(&self) -> &Option<String> {
+        &self.terms_of_service
     }
 
-    pub fn has_contact(self) -> bool {
+    pub fn has_contact(&self) -> bool {
         if self.contact == None {
             return false;
         }
@@ -84,8 +84,8 @@ impl Info {
         true
     }
 
-    pub fn contact(self) -> Option<Contact> {
-        self.contact
+    pub fn contact(&self) -> &Option<Contact> {
+        &self.contact
     }
 }
 
