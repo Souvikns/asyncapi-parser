@@ -1,0 +1,31 @@
+name: build and test
+on:
+    pull_request:
+        types: [opened, synchronize, reopened, ready_for_review]
+        
+jobs:
+    build:
+        name: Test
+        runs-on: ubuntu-latest
+        steps:
+            # Checkout Repository
+            - name: Checkout Repository
+              uses: actions/checkout@v3
+            # Setup up Rust toolchain
+            - name: Set up Rust
+              uses: actions-rs/toolchain@v1
+              with:
+                toolchain: stable
+                override: true
+            # Install dependencies 
+            - name: Install dependencies
+              run: cargo fatch
+            # Rust Tests
+            - name: Run Tests
+              run: cargo test --verbose
+            # Check code formatting
+            - name: Check formatting 
+              run: cargo fmt -- --check 
+            # Check linting
+            - name: Run Clippy
+              run: cargo clippy -- -D warnings
