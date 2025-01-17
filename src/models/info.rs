@@ -91,16 +91,18 @@ impl Info {
 
 #[cfg(test)]
 mod tests {
+    use serde_json::json;
+
     use super::*;
 
     #[test]
     fn parse_info() {
-        let info = Info {
-            title: "Simple Server".to_string(),
-            version: "0.0.1".to_string(),
-            ..Default::default()
-        };
+        let json_info = json!({
+            "title": "Simple Server".to_string(),
+            "version": "0.0.1".to_string()
+        });
 
-        assert_eq!(info.has_contact(), false)
+        let info: Info = serde_json::from_str(&json_info.to_string()).unwrap();
+        assert_eq!(info.title(), "Simple Server");
     }
 }
