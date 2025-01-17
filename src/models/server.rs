@@ -40,7 +40,7 @@ impl Server {
     }
 
     pub fn has_path_name(&self) -> bool {
-        if self.path_name == None {
+        if self.path_name.is_none() {
             return false;
         }
         true
@@ -51,7 +51,7 @@ impl Server {
     }
 
     pub fn has_protocol_version(&self) -> bool {
-        if self.protocol_version == None {
+        if self.protocol_version.is_none() {
             return false;
         }
         true
@@ -62,7 +62,7 @@ impl Server {
     }
 
     pub fn has_description(&self) -> bool {
-        if self.description == None {
+        if self.description.is_none() {
             return false;
         }
         true
@@ -87,6 +87,6 @@ mod tests {
 
         let server: Server = serde_json::from_str(&json_server.to_string()).unwrap();
         assert_eq!(server.protocol, "wss");
-        assert_eq!(server.has_description(), false);
+        assert!(!server.has_description());
     }
 }

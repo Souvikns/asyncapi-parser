@@ -44,7 +44,7 @@ impl Info {
     }
 
     pub fn has_description(&self) -> bool {
-        if self.description == None {
+        if self.description.is_none() {
             return false;
         }
         true
@@ -55,7 +55,7 @@ impl Info {
     }
 
     pub fn has_id(&self) -> bool {
-        if self.id == None {
+        if self.id.is_none() {
             return false;
         }
         true
@@ -66,7 +66,7 @@ impl Info {
     }
 
     pub fn has_terms_of_service(&self) -> bool {
-        if self.id == None {
+        if self.id.is_none() {
             return false;
         }
         true
@@ -77,7 +77,7 @@ impl Info {
     }
 
     pub fn has_contact(&self) -> bool {
-        if self.contact == None {
+        if self.contact.is_none() {
             return false;
         }
 

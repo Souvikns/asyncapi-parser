@@ -37,7 +37,7 @@ mod tests {
         assert_eq!(asyncapi.version(), "3.0.0");
         assert_eq!(asyncapi.info().version(), "0.0.1");
         assert_eq!(asyncapi.info().title(), "Simple web server");
-        assert_eq!(asyncapi.info().has_description(), false);
-        assert_eq!(asyncapi.info().has_contact(), false);
+        assert!(!asyncapi.info().has_description());
+        assert!(!asyncapi.info().has_contact());
     }
 }

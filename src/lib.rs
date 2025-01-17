@@ -1,3 +1,4 @@
+#![allow(dead_code)]
 use jsonschema::Draft;
 use serde_json::Value;
 use std::fs;
@@ -95,7 +96,7 @@ mod tests {
         let result = validate("./asyncapi.yml");
         match result {
             Ok(()) => assert!(true),
-            Err(e) => assert!(e.len() == 0),
+            Err(e) => assert!(e.is_empty()),
         }
     }
 }
