@@ -1,7 +1,9 @@
+#![allow(dead_code)]
 use jsonschema::Draft;
 use serde_json::Value;
 use std::fs;
 use std::path::Path;
+mod models;
 
 /// Validate AsyncAPI Spec file
 ///
@@ -94,7 +96,7 @@ mod tests {
         let result = validate("./asyncapi.yml");
         match result {
             Ok(()) => assert!(true),
-            Err(e) => assert!(e.len() == 0),
+            Err(e) => assert!(e.is_empty()),
         }
     }
 }
