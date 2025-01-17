@@ -1,5 +1,5 @@
-use serde::{Deserialize, Serialize};
 use indexmap::IndexMap;
+use serde::{Deserialize, Serialize};
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq)]
 #[serde(rename_all = "camelCase")]
@@ -13,10 +13,8 @@ pub struct Server {
     #[serde(skip_serializing_if = "Option::is_none")]
     description: Option<String>,
     #[serde(default, skip_serializing_if = "IndexMap::is_empty")]
-    variable: IndexMap<String, ServerVariable>
+    variable: IndexMap<String, ServerVariable>,
 }
-
-
 
 #[derive(Debug, Clone, Serialize, Deserialize, Default, PartialEq)]
 #[serde(rename_all = "camelCase")]
@@ -29,9 +27,7 @@ pub struct ServerVariable {
     #[serde(skip_serializing_if = "Option::is_none")]
     description: Option<String>,
     #[serde(skip_serializing_if = "Option::is_none")]
-    examples: Option<Vec<String>>
-
-    // TODO: security, tags, externalDocs, bindings
+    examples: Option<Vec<String>>, // TODO: security, tags, externalDocs, bindings
 }
 
 impl Server {
@@ -56,7 +52,7 @@ impl Server {
 
     pub fn has_protocol_version(&self) -> bool {
         if self.protocol_version == None {
-            return false
+            return false;
         }
         true
     }
@@ -67,7 +63,7 @@ impl Server {
 
     pub fn has_description(&self) -> bool {
         if self.description == None {
-            return false
+            return false;
         }
         true
     }
@@ -75,14 +71,12 @@ impl Server {
     pub fn description(&self) -> &Option<String> {
         &self.description
     }
-
-
 }
 
 #[cfg(test)]
 mod tests {
-    use serde_json::json;
     use super::*;
+    use serde_json::json;
 
     #[test]
     fn parse_server() {
